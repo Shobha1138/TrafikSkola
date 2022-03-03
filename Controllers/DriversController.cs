@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -54,8 +55,21 @@ namespace TrafikSkola.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DriverId,DriverName,Specliazation,ImageUrl")] Driver driver)
+        public async Task<IActionResult> Create([Bind("DriverId,DriverName,VechicalType,FileName,File,FileForm")] Driver driver)
         {
+            if (driver.FileForm != null)
+            {
+                byte[] bytes = null;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    driver.FileForm.CopyTo(ms);
+                    bytes = ms.ToArray();
+                }
+
+                driver.File = bytes;
+                driver.FileName = driver.FileForm.FileName;
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(driver);
@@ -86,7 +100,7 @@ namespace TrafikSkola.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DriverId,DriverName,Specliazation,ImageUrl")] Driver driver)
+        public async Task<IActionResult> Edit(int id, [Bind("DriverId,DriverName,VechicalType,FileName,File")] Driver driver)
         {
             if (id != driver.DriverId)
             {

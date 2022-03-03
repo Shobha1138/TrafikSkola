@@ -12,14 +12,15 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+              <!-- Add Driver Name dropdown here, read values from Drivers model and show names, instead of hard coding-->
              <div class="form-group">
-              @*  <label asp-for="DriverName" class="control-label"></label>*@
-                <select id="DoctorName" name="DriverName">
+                <label asp-for="DriverName" class="control-label"></label>
+                <select id="DriverName" name="DriverName">
                     <option value="">--Select One--</option>
                     <option value="1">Mr.Ali-Bikes</option>
                     <option value="2">Mr.Eswar-Cars</option>
-                    <option value="3">Mr.Long-Buses</option>  
-                    <option value="4">Mr.Aru-Trucks</option>                                         
+                    <option value="3">Mis.Loma-Buses</option>  
+                    <option value="4">Mis.Maaya-Trucks</option>                                         
                 </select>  
 
              

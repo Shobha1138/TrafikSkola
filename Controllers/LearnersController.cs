@@ -54,40 +54,15 @@ namespace TrafikSkola.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LearnerId,LearnerName,Age,Start,End,DriverName,Email")] Learner learner,int driverId)
+        public async Task<IActionResult> Create([Bind("LearnerId,LearnerName,Age,Start,End,DriverName,Email")] Learner learner)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(learner);
                 await _context.SaveChangesAsync();
-                Console.WriteLine("Before adding booking");
-                Booking booking = new Booking();
-                //return RedirectToAction(nameof(Index));
-                if (learner == null)
-                {
-                    return NotFound();
-                }
-                //booking.DriverId = int.Parse(learner.DriverName);
-                //booking.Learner = learner;
-
-                _context.Add(booking);
-                await _context.SaveChangesAsync();
-                Console.WriteLine("After adding booking");
                 return RedirectToAction(nameof(Index));
             }
             return View(learner);
-        }
-        public ActionResult GetDoctorId()
-        {
-            Booking booking = new Booking();
-            var drivers = (from Drivers in _context.Drivers select Drivers);
-
-
-            _context.Add(booking);
-
-
-            return View(drivers);
-
         }
 
         // GET: Learners/Edit/5

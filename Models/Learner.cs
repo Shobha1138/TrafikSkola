@@ -11,7 +11,7 @@ namespace TrafikSkola.Models
 
         }
 
-        public Learner(string learnerName, int age, List<Driver> drivers, DateTime start, DateTime end, /*string driverName,*/ string email)
+        public Learner(string learnerName, int age, List<Driver> drivers, DateTime start, DateTime end, string driverName, string email)
         {
 
             LearnerName = learnerName;
@@ -19,7 +19,7 @@ namespace TrafikSkola.Models
             Drivers = drivers;
             Start = start;
             End = end;
-            //DriverName = driverName;
+            DriverName = driverName;
             Email = email;
         }
         [Key]
@@ -33,7 +33,7 @@ namespace TrafikSkola.Models
 
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
-        //public string DriverName { get; set; }
+        public string DriverName { get; set; }
         public string Email { get; set; }
     }
 }

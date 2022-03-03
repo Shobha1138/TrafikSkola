@@ -3,34 +3,26 @@
 @{
     ViewData["Title"] = "Index";
 }
-<body class="Driversbody">
-<h1 style="Text-Align:center;">Welcome to Driver's page!</h1>
-<hr />
-<br />
-<div class="row">
-    <div class="col-md-6">
-       <button type="button" class="btn btn-light btn-rounded"> <a  asp-controller="Bookings">see your bookings here</a></button>
-       </div>
-       <div class="col-md-6">
-         <button type="button" class="btn btn-light btn-rounded"> <a asp-action="Create">Add new Drivers here</a></button>
-       </div>
-</div>
 
+<h1>Index</h1>
 
-  
-  <br />
-  <hr />
-<table class="table table-hover">
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
     <thead>
-        <tr class="p-3 mb-2 bg-dark text-white">
+        <tr>
             <th>
                 @Html.DisplayNameFor(model => model.DriverName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Skills)
+                @Html.DisplayNameFor(model => model.VechicalType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
+                @Html.DisplayNameFor(model => model.FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.File)
             </th>
             <th></th>
         </tr>
@@ -42,10 +34,14 @@
                 @Html.DisplayFor(modelItem => item.DriverName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Skills)
+                @Html.DisplayFor(modelItem => item.VechicalType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+              @* @Html.DisplayFor(modelItem => item.File)*@
+                 <img src="data:Image/jpeg;base64,@Convert.ToBase64String(item.File)"height="40"/>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.DriverId">Edit</a> |
@@ -56,4 +52,3 @@
 }
     </tbody>
 </table>
-</body>

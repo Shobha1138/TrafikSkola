@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="Post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="DriverName" class="control-label"></label>
@@ -18,14 +18,23 @@
                 <span asp-validation-for="DriverName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Skills" class="control-label"></label>
-                <input asp-for="Skills" class="form-control" />
-                <span asp-validation-for="Skills" class="text-danger"></span>
+                <label asp-for="VechicalType" class="control-label"></label>
+                <input asp-for="VechicalType" class="form-control" />
+                <span asp-validation-for="VechicalType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                <label asp-for="FileName" class="control-label"></label>
+                @*<input asp-for="FileName" class="form-control" />*@
+                  <input type="File" onchange="getFile(this)" asp-for="FileName" name="FileForm" class="form-control" />
+
+                
+                <span asp-validation-for="FileName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="File" class="control-label"></label>
+                @*<input asp-for="File" class="form-control" />*@
+                  <img id="driverImage" height ="200"/>
+                <span asp-validation-for="File" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -39,5 +48,21 @@
 </div>
 
 @section Scripts {
+      <script>
+        function getFile(data){
+            //const image = document.querySelector('img');
+            const image =document.getElementById('driverImage')
+            const reader = new FileReader();
+            const file =data.files[0];
+
+            reader.addEventListener("load", function(){
+            
+                image.src = reader.result;
+            },false);
+
+            reader.readAsDataURL(file);
+            
+        }
+    </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

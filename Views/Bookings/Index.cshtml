@@ -10,44 +10,40 @@
 
 <table  class="table table-hover">
     <thead class="table-dark">
-
-    
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Start)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.End)
-            </th>
-            <th>
+             <th>
                 @Html.DisplayNameFor(model => model.Driver)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Learner)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Learner.Start)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Learner.End)
+            </th>
+           
+           
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Start)
+                @Html.DisplayFor(modelItem => item.Driver.DriverName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.End)
+                @Html.DisplayFor(modelItem => item.Learner.LearnerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Driver.DriverId)
+                @Html.DisplayFor(modelItem => item.Learner.Start)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Learner.LearnerId)
+                @Html.DisplayFor(modelItem => item.Learner.End)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
-            </td>
+            
+           
         </tr>
 }
     </tbody>
