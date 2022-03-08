@@ -7,6 +7,6 @@ namespace TrafikSkola.Models
         IEnumerable<Booking> AllBookings { get; }
         IEnumerable<Driver> AllDrivers { get; set; }
 
-        Booking GetAppointmentsById(int BookingId);
+        Booking GetBookingsById(int BookingId);
     }
 }

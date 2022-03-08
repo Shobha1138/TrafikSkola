@@ -61,38 +61,38 @@ namespace TrafikSkola.Controllers
                 _context.Add(learner);
                 await _context.SaveChangesAsync();
 
-                //Console.WriteLine("Before adding bookings");
+                Console.WriteLine("Before adding bookings");
 
                 //Add to Booking table also here.
-                //Booking booking = new Booking();
+                Booking booking = new Booking();
                 return RedirectToAction(nameof(Index));
 
-                //if (learner == null)
-                //{
-                //    return NotFound();
-                //}
-                //booking.DriverId = int.Parse(learner.DriverName);
-                //booking.Learner = learner;
+                if (learner == null)
+                {
+                    return NotFound();
+                }
+                booking.DriverId = int.Parse(learner.DriverName);
+                booking.Learner = learner;
 
-                //_context.Add(booking);
-                //await _context.SaveChangesAsync();
-                //Console.WriteLine("After adding booking");
-                //return RedirectToAction(nameof(Index));
+                _context.Add(booking);
+                await _context.SaveChangesAsync();
+                Console.WriteLine("After adding booking");
+                return RedirectToAction(nameof(Index));
             }
             return View(learner);
         }
-        //public ActionResult GetDriverId()
-        //{
-        //    Booking booking = new Booking();
-        //    var drivers = (from Drivers in _context.Drivers select Drivers);
+        public ActionResult GetDriverId()
+        {
+            Booking booking = new Booking();
+           var drivers = (from Drivers in _context.Drivers select Drivers);
 
 
-        //    _context.Add(booking);
+           _context.Add(booking);
 
 
-        //    return View(drivers);
+            return View(drivers);
 
-        //}
+        }
 
         // GET: Learners/Edit/5
         public async Task<IActionResult> Edit(int? id)
