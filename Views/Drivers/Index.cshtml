@@ -3,15 +3,36 @@
 @{
     ViewData["Title"] = "Index";
 }
+<body class="Driversbody">
+<h1 style="Text-Align:center;">Welcome to Driver's page!</h1>
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-6">
+       <button type="button" class="btn btn-light btn-rounded"> <a asp-controller="Bookings">See Your Bookings here</a></button>
+       </div>
+       <div class="col-md-6">
+         <button type="button" class="btn btn-light btn-rounded"> <a asp-action="Create">Add new Drivers here</a></button>
+       </div>
+</div>
 
-<h1>Index</h1>
+
+  <!-- <a Response.Redirect(Url.Action("action", "Learnercontroller"))>see</a> -->
+  <br />
+  <hr />
+
+
+
+
+
+@*<h1>Index</h1>*@
 
 <p>
-    <a asp-action="Create">Create New</a>
+   @* <a asp-action="Create">Create New</a>*@
 </p>
-<table class="table">
+<table class="table table-hover">
     <thead>
-        <tr>
+        <tr class="p-3 mb-2 bg-dark text-white">
             <th>
                 @Html.DisplayNameFor(model => model.DriverName)
             </th>
@@ -52,3 +73,4 @@
 }
     </tbody>
 </table>
+</body>

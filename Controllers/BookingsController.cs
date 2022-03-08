@@ -13,7 +13,7 @@ namespace TrafikSkola.Controllers
     public class BookingsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public int Driverid { get; private set; }
+        //public int Driverid { get; private set; }
 
         public BookingsController(ApplicationDbContext context)
         {
