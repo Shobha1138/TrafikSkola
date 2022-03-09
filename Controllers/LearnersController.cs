@@ -71,6 +71,14 @@ namespace TrafikSkola.Controllers
                 {
                     return NotFound();
                 }
+
+                //TODO: Add DriverName as a dropdown in /learner/create.cshtml and assign the DriverName parameter here, instead of the hardcoded Ali
+                //String DriverName = "Ali";
+                //String driverValue = formCollection["DriverNameId"];
+
+
+                //Driver dri = _context.Drivers.Where(d => d.DriverName == learner.DriverName).FirstOrDefault();
+
                 booking.DriverId = int.Parse(learner.DriverName);
                 booking.Learner = learner;
 

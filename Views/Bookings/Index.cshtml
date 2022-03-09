@@ -4,13 +4,22 @@
     ViewData["Title"] = "Index";
 }
 @*<p>Here are the learners details with respective driver name and timings.</p>*@
+<div class="row">
+   @* <div class="col-md-6">
+       <button type="button" class="btn btn-light btn-rounded"> <a asp-controller="Bookings">See Your Bookings here</a></button>
+       </div>*@
+      
+       <div class="col-md-6">
+         <button type="button" class="btn btn-light btn-rounded"> <a asp-action="Create">Add new Bookings here</a></button>
+       </div>
+</div>
 
 @*<p>
     <a asp-action="Create">Create New</a>
 </p>*@
-  <div class="col-md-6">
+ @* <div class="col-md-6">
          <button type="button" class="btn btn-light btn-rounded"> <a asp-action="Create">Add new Bookings here</a></button>
-       </div>
+       </div>*@
   
 
 </div>
@@ -33,6 +42,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Learner.End)
             </th>
+            <th></th>
+            
            
            
         </tr>
