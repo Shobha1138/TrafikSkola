@@ -23,6 +23,10 @@
                     <option value="4">Mis.Maaya-Trucks</option>                                         
                 </select>  
                  </div>
+                     @*  <div>  
+        <asp:dropdownlist id="dropdownlist1" runat="server">  
+        </asp:dropdownlist> 
+        </div>*@
                  
                @* @Html.LabelFor(x => Model.DriverName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-5">
@@ -30,10 +34,7 @@
                     @Html.ValidationMessageFor(x => x.DriverName, "", new { @class = "text-danger" })
                 </div> *@
 
-           @*  <div>  
-        <asp:dropdownlist id="dropdownlist1" runat="server">  
-        </asp:dropdownlist> 
-        </div>*@
+        
             
             <div class="form-group">
                 <label asp-for="LearnerName" class="control-label"></label>
