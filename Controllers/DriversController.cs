@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,7 @@ namespace TrafikSkola.Controllers
         {
             _context = context;
         }
-
+        
         // GET: Drivers
         public async Task<IActionResult> Index()
         {
@@ -45,6 +46,7 @@ namespace TrafikSkola.Controllers
         }
 
         // GET: Drivers/Create
+        [Authorize(Roles="Administator")]
         public IActionResult Create()
         {
             return View();
